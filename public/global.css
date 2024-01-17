@@ -44,6 +44,13 @@ li {
     text-wrap: pretty;
 }
 
+ul,
+ol {
+    list-style: none;
+}
+
+
+
 /* remove smooth scrolling */
 /* center elements in viewport */
 
@@ -51,5 +58,25 @@ li {
     :has(:target) {
         scroll-behavior: smooth;
         scroll-padding-top: 3rem;
+    }
+}
+
+/* grid helper */
+
+.content-grid,
+.full-width {
+    display: grid;
+    grid-template-columns: [full-width-start] 5vw [breakout-start] 5vw [content-start] 1fr [content-end] 5vw [breakout-end] 5vw [full-width-end];
+    &> :not(.breakout, .full-width) {
+        grid-column: content;
+    }
+}
+
+.content-grid {
+    > .breakout {
+        grid-column: breakout;
+    }
+    > .full-width {
+        grid-column: full-width;
     }
 }
