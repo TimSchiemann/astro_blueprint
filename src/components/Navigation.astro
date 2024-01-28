@@ -1,24 +1,20 @@
 ---
+const {navLinks} = Astro.props
 ---
-<nav class="breakout">
-    <ul>
-        <li>
-            <a href=""></a>Test
-        </li>
-        <li>
-            <a href=""></a>Test
-        </li>
-        <li>
-            <a href=""></a>Test
-        </li>
-        <li>
-            <a href=""></a>Test
-        </li>
-    </ul>
+<nav class="full-width">
+    {navLinks && <ul class="links">
+        {navLinks.map((link: { url: string | URL; title: string }) =>
+    <li>
+        <a href={link.url}>{link.title}</a>
+    </li>
+    )}
+    </ul>}
 </nav>
-<style>
+<style lang="scss">
+    @use "../styles/utils" as utils;
     nav {
         background-color: red;
+        padding-block: utils.rem-calc(20);
         ul {
             display: flex;
             justify-content: space-between;

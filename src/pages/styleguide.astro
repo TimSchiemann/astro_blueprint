@@ -2,8 +2,14 @@
 import Page from "../layouts/Page.astro";
 
 const title = "Styleguide";
+const navLinks = [
+    {title: 'Home', url: '/'}, 
+    {title: 'Styleguide', url: '/styleguide'}
+];
+//TODO: replace links
+const footerLinks = [{title: 'test1', url: '/url1'}, {title: 'test2', url: '/url2'}];
 ---
-<Page pageTitle={title}>
+<Page pageTitle={title} navLinks={navLinks} footerLinks={footerLinks}>
     <section class="section">
         <h1 class="headline h1">{title}</h1>
         <h1 class="headline h1">Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
