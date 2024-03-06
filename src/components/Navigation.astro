@@ -1,23 +1,12 @@
 ---
+import MobileNavigation from "./MobileNavigation.astro";
+import DesktopNavigation from "./DesktopNavigation.astro";
 const {navLinks} = Astro.props
 ---
-<nav class="full-width">
-    {navLinks && <ul class="links">
-        {navLinks.map((link: { url: string | URL; title: string }) =>
-    <li>
-        <a href={link.url}>{link.title}</a>
-    </li>
-    )}
-    </ul>}
-</nav>
+<MobileNavigation navLinks={navLinks} />
+<DesktopNavigation navLinks={navLinks} />
 <style lang="scss">
-    @use "../styles/utils" as utils;
     nav {
-        background-color: red;
-        padding-block: utils.rem-calc(20);
-        ul {
-            display: flex;
-            justify-content: space-between;
-        }
+        background-color: var(--background-color);
     }
 </style>

@@ -1,0 +1,27 @@
+---
+import Hamburger from './Hamburger.astro';
+const {navLinks} = Astro.props
+---
+<nav class="full-width">
+    <Hamburger />
+    {navLinks && <ul class="links">
+        {navLinks.map((link: { url: string | URL; title: string }) =>
+    <li>
+        <a href={link.url}>{link.title}</a>
+    </li>
+    )}
+    </ul>}
+</nav>
+<style lang="scss">
+    @use "../styles/utils" as utils;
+    nav {
+        padding-block: utils.rem-calc(20);
+        ul {
+            display: none;
+            justify-content: space-between;
+        }
+        @include utils.breakpoint('desktop') {
+            display: none;
+        }
+    }
+</style>

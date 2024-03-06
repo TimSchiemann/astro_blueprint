@@ -14,20 +14,43 @@
     @return $rem-value;
 }
 
+$colors: (
+    white: hsl(0deg 0% 100%),
+    black: hsl(0deg 0% 0%),
+    positive: hsl(163deg 72% 41%),
+    negative: hsl(356deg 69% 56%),
+
+    primary: hsl(221deg, 51%, 16%),
+    secondary: hsl(0deg, 0%, 90%),
+    accent: hsl(37deg, 98%, 53%),
+
+
+    socials: (
+        facebook: hsl(208deg 92% 53%),
+        twitter: hsl(203deg 89% 53%),
+        instagram-yellow:hsl(37deg 97% 70%),
+        instagram-pink: hsl(329deg 70% 58%),
+        youtube: hsl(348deg 97% 39%),
+    ),
+
+    dark-theme: (
+    ),
+);
+
 @function color($name, $category: null, $nested-name: null) {
     // Retrieve a first level color
     @if not $category and not $nested-name {
-        @return map-get(variables.$colors, $name);
+        @return map-get($colors, $name);
     }
 
     // Retrieve a second level color
     @if $category != null and $nested-name == null {
-        @return map-get(map-get(variables.$colors, $name), $category);
+        @return map-get(map-get($colors, $name), $category);
     }
 
     // Retrieve a third level color
     @else if $category != null and $nested-name != null {
-        @return map-get(map-get(map-get(variables.$colors, $name), $category), $nested-name);
+        @return map-get(map-get(map-get($colors, $name), $category), $nested-name);
     }
 }
 
@@ -72,4 +95,18 @@
         calc(var(--#{$title}-l) + #{$lightness}),
         calc(var(--#{$title}-a) + #{$alpha}),
     );
+}
+
+//breakpoint generator
+$breakpoints: (
+    mobile: 400px,
+    desktop: 900px
+);
+
+@mixin breakpoint($breakpoint) {
+    $min-width: map-get($breakpoints, $breakpoint);
+
+    @media only screen and (min-width: $min-width) {
+        @content;
+    }
 }

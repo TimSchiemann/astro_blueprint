@@ -21,3 +21,12 @@ const { pageTitle, footerLinks, navLinks } = Astro.props;
     <Footer footerLinks={footerLinks} />
   </body>
 </html>
+<style lang="scss">
+    @use "../styles/utils" as utils;
+    body {
+        --background-color: #{utils.color('primary')};
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
