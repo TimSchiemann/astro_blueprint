@@ -20,6 +20,7 @@ $colors: (
     positive: hsl(163deg 72% 41%),
     negative: hsl(356deg 69% 56%),
 
+    milkglass: hsl(0deg, 0%, 100%, 0.3),
     primary: hsl(221deg, 51%, 16%),
     secondary: hsl(0deg, 0%, 90%),
     accent: hsl(37deg, 98%, 53%),
@@ -109,4 +110,10 @@ $breakpoints: (
     @media only screen and (min-width: $min-width) {
         @content;
     }
+}
+
+//milk glass effect
+@mixin milkglass() {
+    background-color: color("milkglass");
+    backdrop-filter: blur(6px);
 }

@@ -11,6 +11,7 @@
     .hamburger {
         --color: #{utils.color('accent')};
         color: var(--color);
+        margin-left: auto;
         &.active {
             svg {
                 --tw-rotate: 45deg;
@@ -59,11 +60,17 @@
 </style>
 <script>
     const navigationTrigger = document.querySelector('.hamburger');
+    const container = document.querySelector('header nav .container');
+
     navigationTrigger.addEventListener('click', () => {
-        if(navigationTrigger.classList.contains('active')) {
+
+        if (container.getAttribute('aria-expanded') === 'true') {
+            container.setAttribute('aria-expanded', 'false');
             navigationTrigger.classList.remove('active');
             return;
         }
+
+        container.setAttribute('aria-expanded', 'true');
         navigationTrigger.classList.add('active');
     });
 </script>

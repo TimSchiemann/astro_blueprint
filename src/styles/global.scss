@@ -1,6 +1,11 @@
 @use "utils";
 @use "variables";
 
+/* variables */
+html {
+    --timing: 200ms;
+}
+
 /* make sizing simpler */
 *,
 *::before,
