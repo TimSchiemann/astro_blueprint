@@ -3,18 +3,59 @@ import Page from "../layouts/Page.astro";
 
 const title = "Styleguide";
 const navLinks = [
-    {title: 'Home', url: '/'}, 
-    {title: 'Styleguide', url: '/styleguide'}
+	{ title: "Home", url: "/" },
+	{ title: "Styleguide", url: "/styleguide" },
 ];
 //TODO: replace links
-const footerLinks = [{title: 'test1', url: '/url1'}, {title: 'test2', url: '/url2'}];
+const footerLinks = [
+	{ title: "test1", url: "/url1" },
+	{ title: "test2", url: "/url2" },
+];
 ---
+
 <Page pageTitle={title} navLinks={navLinks} footerLinks={footerLinks}>
-    <section class="section">
-        <h1 class="headline h1">{title}</h1>
-        <h1 class="headline h1">Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
-        <h2 class="headline h2">Lorem ipsum dolor sit amet consectetur adipisicing.</h2>
-        <h3 class="headline h3">Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti magnam consequuntur repellendus accusamus? Numquam totam deserunt fugit unde a sunt!</p>
-    </section>
+	<h1 class="headline h1">{title}</h1>
+	<section class="section">
+		<h2 class="headline h2">Typo</h2>
+		<h1 class="headline h1">
+			Lorem ipsum dolor sit amet consectetur adipisicing.
+		</h1>
+		<h2 class="headline h2">
+			Lorem ipsum dolor sit amet consectetur adipisicing.
+		</h2>
+		<h3 class="headline h3">
+			Lorem ipsum dolor sit amet consectetur adipisicing.
+		</h3>
+		<p>
+			Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+			magnam consequuntur repellendus accusamus? Numquam totam deserunt
+			fugit unde a sunt!
+		</p>
+	</section>
+	<section class="section">
+		<h2 class="headline h2">Lists</h2>
+		<ol>
+			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Lorem ipsum dolor sit amet.</li>
+		</ol>
+		<ul>
+			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Lorem ipsum dolor sit amet.</li>
+			<li>Lorem ipsum dolor sit amet.</li>
+		</ul>
+	</section>
+	<section class="section">
+		<h2 class="headline h2">Links</h2>
+		<a href="">Internal Link</a>
+		<a href="" rel="external" target="_blank">External Link</a>
+	</section>
+	<section class="section">
+		<h2 class="headline h2">Buttons</h2>
+		<button class="button">Lorem, ipsum dolor.</button>
+		<button>Lorem, ipsum dolor.</button>
+		<button>Lorem, ipsum dolor.</button>
+	</section>
 </Page>

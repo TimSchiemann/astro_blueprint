@@ -1,0 +1,11 @@
+@use "../utils";
+
+:root {
+	--backgrund-color: #{utils.color("black-1")};
+	--color: #{utils.color("white-1")};
+	--color-accent: #{utils.color("accent")};
+	--color-black: #{utils.color("black-1")};
+
+	color: var(--color);
+	background-color: var(--backgrund-color);
+}

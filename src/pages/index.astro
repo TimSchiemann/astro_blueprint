@@ -1,5 +1,6 @@
 ---
 import Page from "../layouts/Page.astro";
+import Grid from "../components/Grid.astro";
 
 const title = "Welcome";
 //TODO: replace links
@@ -8,7 +9,9 @@ const navLinks = [
     {title: 'Home', url: '/'}, 
     {title: 'Styleguide', url: '/styleguide'}
 ];
+
+const gridItems = [{title: 'item1', imageUrl: 'sea.jpg', imageAltText: "picture of the sea"}, {title: 'item2'}, {title: 'item3'}, {title: 'item4'}, {title: 'item5'}];
 ---
 <Page pageTitle={title} footerLinks={footerLinks} navLinks={navLinks}>
-    content
+    <Grid gridItems={gridItems}/>
 </Page>

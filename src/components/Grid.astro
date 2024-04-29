@@ -1,0 +1,28 @@
+---
+const { gridItems } = Astro.props
+
+console.log(gridItems);
+---
+{gridItems && <ul class="grid">
+    {gridItems.map((link: { url: string | URL; title: string; imageUrl: string; imageAltText: string}) =>
+<li>
+    <a href={link.url}>
+        <h4 class="headline h4">{link.title}</h4>
+        <img src={link.imageUrl} alt={link.imageAltText}>
+    </a>
+</li>
+)}
+</ul>}
+<style lang="scss">
+    @use "../styles/utils" as utils;
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(utils.rem-calc(300), 1fr));
+        gap: utils.rem-calc(24);
+        li {
+            display: flex;
+            flex-direction: column;
+
+        }
+    }
+</style>

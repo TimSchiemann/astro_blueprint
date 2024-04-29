@@ -1,0 +1,21 @@
+@use "../utils";
+
+.button {
+	cursor: pointer;
+	border-radius: 999px;
+	padding: {
+		block: {
+			start: utils.rem-calc(12);
+			end: utils.rem-calc(12);
+		}
+		inline: {
+			start: utils.rem-calc(24);
+			end: utils.rem-calc(24);
+		}
+	}
+	background: linear-gradient(
+		to bottom in oklch,
+		var(--color-accent) 0%,
+		var(--color-black) 100%
+	);
+}

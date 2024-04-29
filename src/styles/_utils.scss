@@ -1,119 +1,125 @@
-@use 'sass:math';
+@use "sass:math";
 
 @function strip-unit($number) {
-    @if type-of($number) == 'number' and not unitless($number) {
-      @return math.div($number, ($number * 0 + 1));
-    }
+	@if type-of($number) == "number" and not unitless($number) {
+		@return math.div($number, ($number * 0 + 1));
+	}
 
-    @return $number;
+	@return $number;
 }
 
 @function rem-calc($value) {
-    $rem-value: math.div(strip-unit($value), 16) + rem; 
+	$rem-value: math.div(strip-unit($value), 16) + rem;
 
-    @return $rem-value;
+	@return $rem-value;
 }
 
+//TODO: pick color scheme
 $colors: (
-    white: hsl(0deg 0% 100%),
-    black: hsl(0deg 0% 0%),
-    positive: hsl(163deg 72% 41%),
-    negative: hsl(356deg 69% 56%),
+	white-1: oklch(96.26% 0.02 298.2),
+	black-1: oklch(0% 0 0),
+	positive: oklch(68.57% 0.134 167.49),
+	negative: oklch(60.42% 0.191 21.46),
+	milkglass: oklch(100% 0 0 / 30%),
+	primary: hsl(221deg, 51%, 16%),
+	secondary: hsl(0deg, 0%, 90%),
+	accent: oklch(76.18% 0.185 69.56),
+	socials: (
+		facebook: oklch(64.19% 0.181 251.54),
+		twitter: oklch(67.94% 0.159 243.72),
+		instagram-yellow: oklch(85.31% 0.127 77.56),
+		instagram-pink: oklch(63.57% 0.199 352.43),
+		youtube: oklch(51.85% 0.208 22.52),
+	),
 
-    milkglass: hsl(0deg, 0%, 100%, 0.3),
-    primary: hsl(221deg, 51%, 16%),
-    secondary: hsl(0deg, 0%, 90%),
-    accent: hsl(37deg, 98%, 53%),
-
-
-    socials: (
-        facebook: hsl(208deg 92% 53%),
-        twitter: hsl(203deg 89% 53%),
-        instagram-yellow:hsl(37deg 97% 70%),
-        instagram-pink: hsl(329deg 70% 58%),
-        youtube: hsl(348deg 97% 39%),
-    ),
-
-    dark-theme: (
-    ),
+	dark-theme: (),
 );
 
 @function color($name, $category: null, $nested-name: null) {
-    // Retrieve a first level color
-    @if not $category and not $nested-name {
-        @return map-get($colors, $name);
-    }
+	// Retrieve a first level color
+	@if not $category and not $nested-name {
+		@return map-get($colors, $name);
+	}
 
-    // Retrieve a second level color
-    @if $category != null and $nested-name == null {
-        @return map-get(map-get($colors, $name), $category);
-    }
+	// Retrieve a second level color
+	@if $category != null and $nested-name == null {
+		@return map-get(map-get($colors, $name), $category);
+	}
 
-    // Retrieve a third level color
-    @else if $category != null and $nested-name != null {
-        @return map-get(map-get(map-get($colors, $name), $category), $nested-name);
-    }
+	// Retrieve a third level color
+	@else if $category != null and $nested-name != null {
+		@return map-get(
+			map-get(map-get($colors, $name), $category),
+			$nested-name
+		);
+	}
 }
 
 @function rem-calc($value) {
-    $base-font-size: 16;
+	$base-font-size: 16;
 
-    $rem-value: math.div(strip-unit($value), $base-font-size) + rem;
-  
-    @return $rem-value;
-  }
+	$rem-value: math.div(strip-unit($value), $base-font-size) + rem;
+
+	@return $rem-value;
+}
 
 //Helper for hover and/or focus States
 @mixin hover-focus-state($type: null) {
-    @if $type == hover {
-        &:hover {
-            @content;
-        }
-    } @else if $type == focus {
-        &:focus-visible {
-            @content;
-        }
-    } @else {
-        &:hover,
-        &:focus-visible {
-            @content;
-        }
-    }
+	@if $type == hover {
+		&:hover {
+			@content;
+		}
+	} @else if $type == focus {
+		&:focus-visible {
+			@content;
+		}
+	} @else {
+		&:hover,
+		&:focus-visible {
+			@content;
+		}
+	}
 }
 
 //TODO: Evaluate functionality for splitting into hsl
 @mixin define-color($title, $color) {
-    --#{$title}-h: #{hue($color)};
-    --#{$title}-l: #{lightness($color)};
-    --#{$title}-s: #{saturation($color)};
-    --#{$title}-a: #{alpha($color)};
+	--#{$title}-h: #{hue($color)};
+	--#{$title}-l: #{lightness($color)};
+	--#{$title}-s: #{saturation($color)};
+	--#{$title}-a: #{alpha($color)};
 }
 
-@function color-assembly($title, $hue: 0deg, $lightness: 0%, $saturation: 0%, $alpha: 0) {
-    @return hsla(
-        calc(var(--#{$title}-h) + #{$hue}), 
-        calc(var(--#{$title}-s) + #{$saturation}),
-        calc(var(--#{$title}-l) + #{$lightness}),
-        calc(var(--#{$title}-a) + #{$alpha}),
-    );
+@function color-assembly(
+	$title,
+	$hue: 0deg,
+	$lightness: 0%,
+	$saturation: 0%,
+	$alpha: 0
+) {
+	@return hsla(
+		calc(var(--#{$title}-h) + #{$hue}),
+		calc(var(--#{$title}-s) + #{$saturation}),
+		calc(var(--#{$title}-l) + #{$lightness}),
+		calc(var(--#{$title}-a) + #{$alpha})
+	);
 }
 
 //breakpoint generator
 $breakpoints: (
-    mobile: 400px,
-    desktop: 900px
+	mobile: 400px,
+	desktop: 900px,
 );
 
 @mixin breakpoint($breakpoint) {
-    $min-width: map-get($breakpoints, $breakpoint);
+	$min-width: map-get($breakpoints, $breakpoint);
 
-    @media only screen and (min-width: $min-width) {
-        @content;
-    }
+	@media only screen and (min-width: $min-width) {
+		@content;
+	}
 }
 
 //milk glass effect
 @mixin milkglass() {
-    background-color: color("milkglass");
-    backdrop-filter: blur(6px);
+	background-color: color("milkglass");
+	backdrop-filter: blur(6px);
 }
