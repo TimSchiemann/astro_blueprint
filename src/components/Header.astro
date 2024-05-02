@@ -1,15 +1,16 @@
 ---
 import Navigation from "./Navigation.astro";
-const {navLinks} = Astro.props
+const { navLinks } = Astro.props;
 ---
+
 <header class="content-grid">
-    <Navigation navLinks={navLinks}/>
+	<Navigation navLinks={navLinks} />
 </header>
 <style lang="scss">
-    @use "../styles/utils" as utils;
-    header {
-        --header-height: #{utils.rem-calc(100)};
-        background-color: var(--background-color);
-        height: var(--header-height, auto);
-    }
+	@use "../styles/utils" as utils;
+	header {
+		--header-height: #{utils.rem-calc(100)};
+		background-color: var(--background-color);
+		height: var(--header-height, auto);
+	}
 </style>

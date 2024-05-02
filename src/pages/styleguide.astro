@@ -1,5 +1,7 @@
 ---
 import Page from "../layouts/Page.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
 
 const title = "Styleguide";
 const navLinks = [
@@ -52,10 +54,9 @@ const footerLinks = [
 		<a href="">Internal Link</a>
 		<a href="" rel="external" target="_blank">External Link</a>
 	</section>
-	<section class="section">
-		<h2 class="headline h2">Buttons</h2>
-		<button class="button">Lorem, ipsum dolor.</button>
-		<button>Lorem, ipsum dolor.</button>
-		<button>Lorem, ipsum dolor.</button>
-	</section>
+	<Section headline="Buttons">
+		<Button>Primary</Button>
+		<Button classes="secondary">Secondary</Button>
+		<p>asdfasdf</p>
+	</Section>
 </Page>

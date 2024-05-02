@@ -1,26 +1,31 @@
 ---
-const {navLinks} = Astro.props
+const { navLinks } = Astro.props;
 ---
+
 <nav class="full-width">
-    {navLinks && <ul class="links">
-        {navLinks.map((link: { url: string | URL; title: string }) =>
-    <li>
-        <a href={link.url}>{link.title}</a>
-    </li>
-    )}
-    </ul>}
+	{
+		navLinks && (
+			<ul class="links">
+				{navLinks.map((link: { url: string | URL; title: string }) => (
+					<li>
+						<a href={link.url}>{link.title}</a>
+					</li>
+				))}
+			</ul>
+		)
+	}
 </nav>
 <style lang="scss">
-    @use "../styles/utils" as utils;
-    nav {
-        display: none;
-        padding-block: utils.rem-calc(20);
-        ul {
-            display: flex;
-            justify-content: space-between;
-        }
-        @include utils.breakpoint("desktop") {
-            display: block
-        }
-    }
+	@use "../styles/utils" as utils;
+	nav {
+		display: none;
+		padding-block: utils.rem-calc(20);
+		ul {
+			display: flex;
+			justify-content: space-between;
+		}
+		@include utils.breakpoint("desktop") {
+			display: block;
+		}
+	}
 </style>

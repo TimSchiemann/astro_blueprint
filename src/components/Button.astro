@@ -1,0 +1,39 @@
+---
+const { classes } = Astro.props;
+---
+
+<button class:list={["button", classes]}>
+	<slot />
+</button>
+<style lang="scss">
+	@use "../styles/utils" as utils;
+	button {
+		border: none;
+		color: inherit;
+	}
+	.button {
+		border: 2px solid var(--color-black);
+		cursor: pointer;
+		padding: {
+			block: {
+				start: utils.rem-calc(12);
+				end: utils.rem-calc(12);
+			}
+			inline: {
+				start: utils.rem-calc(24);
+				end: utils.rem-calc(24);
+			}
+		}
+		background-image: linear-gradient(
+			to bottom in oklch,
+			var(--color-accent) 0%,
+			var(--color-black) 100%
+		);
+		background-position: top;
+		background-size: 100% 200%;
+		transition: background-position var(--timing) ease-in-out;
+		@include utils.hover-focus-state() {
+			background-position: bottom;
+		}
+	}
+</style>

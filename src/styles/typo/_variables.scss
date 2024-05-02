@@ -1,0 +1,38 @@
+@use "../utils";
+
+//Font size generator
+$font-sizes: (
+	small: 12px,
+	medium: 16px,
+	large: 24px,
+	xlarge: 32px,
+	xxlarge: 48,
+);
+
+@function get-font-size($size) {
+	@return utils.rem-calc(map-get($font-sizes, $size));
+}
+
+@function generate-clamp-value($size) {
+	$font-size: get-font-size($size);
+	$clamp-value: clamp(#{$font-size - 10%}, 2vw, $font-size);
+	@return $clamp-value;
+}
+
+$font-size-small: clamp(get-font-size(small) - 10%, 2vw, get-font-size(small));
+$font-size-medium: clamp(
+	get-font-size(medium) - 10%,
+	2vw,
+	get-font-size(medium)
+);
+$font-size-large: clamp(get-font-size(large) - 10%, 2vw, get-font-size(large));
+$font-size-xlarge: clamp(
+	get-font-size(xlarge) - 10%,
+	2vw,
+	get-font-size(xlarge)
+);
+$font-size-xxlarge: clamp(
+	get-font-size(xxlarge) - 10%,
+	2vw,
+	get-font-size(xxlarge)
+);

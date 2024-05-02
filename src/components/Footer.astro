@@ -1,20 +1,27 @@
 ---
-const { footerLinks } = Astro.props
+const { footerLinks } = Astro.props;
 ---
+
 <footer class="full-width">
-    {footerLinks && <ul class="links">
-                {footerLinks.map((link: { url: string | URL; title: string }) =>
-            <li>
-                <a href={link.url}>{link.title}</a>
-            </li>
-        )}
-    </ul>}
+	{
+		footerLinks && (
+			<ul class="links">
+				{footerLinks.map(
+					(link: { url: string | URL; title: string }) => (
+						<li>
+							<a href={link.url}>{link.title}</a>
+						</li>
+					)
+				)}
+			</ul>
+		)
+	}
 </footer>
 <style lang="scss">
-    @use "../styles/utils" as utils;
-    footer {
-        background-color: aqua;
-        padding-block: utils.rem-calc(20);
-        margin-block-start: auto;
-    }
+	@use "../styles/utils" as utils;
+	footer {
+		background-color: aqua;
+		padding-block: utils.rem-calc(20);
+		margin-block-start: auto;
+	}
 </style>

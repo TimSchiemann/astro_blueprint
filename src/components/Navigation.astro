@@ -1,12 +1,13 @@
 ---
 import MobileNavigation from "./MobileNavigation.astro";
 import DesktopNavigation from "./DesktopNavigation.astro";
-const {navLinks} = Astro.props
+const { navLinks } = Astro.props;
 ---
+
 <MobileNavigation navLinks={navLinks} />
 <DesktopNavigation navLinks={navLinks} />
 <style lang="scss">
-    nav {
-        background-color: var(--background-color);
-    }
+	nav {
+		background-color: var(--background-color);
+	}
 </style>

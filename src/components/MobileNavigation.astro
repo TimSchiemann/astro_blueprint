@@ -1,46 +1,53 @@
 ---
-import Hamburger from './Hamburger.astro';
-const {navLinks} = Astro.props
+import Hamburger from "./Hamburger.astro";
+const { navLinks } = Astro.props;
 ---
+
 <nav class="full-width">
-    <div class="container" aria-expanded="false">
-        {navLinks && <ul class="links">
-            {navLinks.map((link: { url: string | URL; title: string }) =>
-        <li>
-            <a href={link.url}>{link.title}</a>
-        </li>
-        )}
-        </ul>}
-    </div>
-    <Hamburger />
+	<div class="container" aria-expanded="false">
+		{
+			navLinks && (
+				<ul class="links">
+					{navLinks.map(
+						(link: { url: string | URL; title: string }) => (
+							<li>
+								<a href={link.url}>{link.title}</a>
+							</li>
+						)
+					)}
+				</ul>
+			)
+		}
+	</div>
+	<Hamburger />
 </nav>
 <style lang="scss">
-    @use "../styles/utils" as utils;
-    nav {
-        padding-block: utils.rem-calc(20);
-        .container {
-            @include utils.milkglass();
-            transform: translateX(100%);
-            transition: transform var(--timing);
-            position: absolute;
-            right: 0;
-            top: var(--header-height);
-            height: calc(100svh - var(--header-height));
-            padding: utils.rem-calc(32) utils.rem-calc(48);
-            &[aria-expanded="true"] {
-                transform: translateX(0);
-            }
-            ul {
-                display: flex;
-                flex-direction: column;
-                gap: utils.rem-calc(16);
-                li {
-                    background-color: unset;
-                }
-            }
-        }
-        @include utils.breakpoint('desktop') {
-            display: none;
-        }
-    }
+	@use "../styles/utils" as utils;
+	nav {
+		padding-block: utils.rem-calc(20);
+		.container {
+			@include utils.milkglass();
+			transform: translateX(100%);
+			transition: transform var(--timing);
+			position: absolute;
+			right: 0;
+			top: var(--header-height);
+			height: calc(100svh - var(--header-height));
+			padding: utils.rem-calc(32) utils.rem-calc(48);
+			&[aria-expanded="true"] {
+				transform: translateX(0);
+			}
+			ul {
+				display: flex;
+				flex-direction: column;
+				gap: utils.rem-calc(16);
+				li {
+					background-color: unset;
+				}
+			}
+		}
+		@include utils.breakpoint("desktop") {
+			display: none;
+		}
+	}
 </style>
