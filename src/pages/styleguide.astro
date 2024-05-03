@@ -2,11 +2,13 @@
 import Page from "../layouts/Page.astro";
 import Section from "../components/Section.astro";
 import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import GridContainer from "../components/GridContainer.astro";
 
 const title = "Styleguide";
 const navLinks = [
 	{ title: "Home", url: "/" },
-	{ title: "Styleguide", url: "/styleguide" },
+	{ title: "Styleguide", url: "/styleguide", highlight: true },
 ];
 //TODO: replace links
 const footerLinks = [
@@ -57,6 +59,13 @@ const footerLinks = [
 	<Section headline="Buttons">
 		<Button>Primary</Button>
 		<Button classes="secondary">Secondary</Button>
-		<p>asdfasdf</p>
+	</Section>
+	<Section headline="test">
+		<GridContainer>
+			<Card title="Planning" />
+
+			<Card title="Development" />
+			<Card title="Maintenance" />
+		</GridContainer>
 	</Section>
 </Page>

@@ -6,11 +6,21 @@ const { navLinks } = Astro.props;
 	{
 		navLinks && (
 			<ul class="links">
-				{navLinks.map((link: { url: string | URL; title: string }) => (
-					<li>
-						<a href={link.url}>{link.title}</a>
-					</li>
-				))}
+				{navLinks.map(
+					(link: {
+						url: string | URL;
+						title: string;
+						highlight: boolean;
+					}) => (
+						<li
+							class:list={[
+								link.highlight === true ? "button" : "",
+							]}
+						>
+							<a href={link.url}>{link.title}</a>
+						</li>
+					)
+				)}
 			</ul>
 		)
 	}
@@ -20,9 +30,20 @@ const { navLinks } = Astro.props;
 	nav {
 		display: none;
 		padding-block: utils.rem-calc(20);
+		position: fixed;
+		width: 100%;
 		ul {
+			border: 1px solid red;
+			border-radius: 999px;
+			padding: utils.rem-calc(16);
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
+			margin-inline: auto;
+			gap: utils.rem-calc(24);
+			background: rgba(0, 0, 0, 0.8);
+			backdrop-filter: saturate(180%) blur(10px);
+			width: fit-content;
 		}
 		@include utils.breakpoint("desktop") {
 			display: block;

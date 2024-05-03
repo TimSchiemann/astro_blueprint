@@ -4,14 +4,24 @@ import Grid from "../components/Grid.astro";
 
 const title = "Welcome";
 //TODO: replace links
-const footerLinks = [{title: 'test1', url: '/url1'}, {title: 'test2', url: '/url2'}];
+const footerLinks = [
+	{ title: "test1", url: "/url1" },
+	{ title: "test2", url: "/url2" },
+];
 const navLinks = [
-    {title: 'Home', url: '/'}, 
-    {title: 'Styleguide', url: '/styleguide'}
+	{ title: "Home", url: "/" },
+	{ title: "Styleguide", url: "/styleguide", highlight: true },
 ];
 
-const gridItems = [{title: 'item1', imageUrl: 'sea.jpg', imageAltText: "picture of the sea"}, {title: 'item2'}, {title: 'item3'}, {title: 'item4'}, {title: 'item5'}];
+const gridItems = [
+	{ title: "item1", imageUrl: "sea.jpg", imageAltText: "picture of the sea" },
+	{ title: "item2" },
+	{ title: "item3" },
+	{ title: "item4" },
+	{ title: "item5" },
+];
 ---
+
 <Page pageTitle={title} footerLinks={footerLinks} navLinks={navLinks}>
-    <Grid gridItems={gridItems}/>
+	<Grid gridItems={gridItems} />
 </Page>

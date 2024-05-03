@@ -120,6 +120,6 @@ $breakpoints: (
 
 //milk glass effect
 @mixin milkglass() {
-	background-color: color("milkglass");
+	// background-color: color("milkglass");
 	backdrop-filter: blur(6px);
 }
