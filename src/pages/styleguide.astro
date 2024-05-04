@@ -15,6 +15,24 @@ const footerLinks = [
 	{ title: "test1", url: "/url1" },
 	{ title: "test2", url: "/url2" },
 ];
+
+const foregroundColor = "rgb(221 20 228)";
+const backgroundColor = "rgb(24 20 78)";
+const colors = [
+	"oklch(96.26% 0.02 298.2)",
+	"oklch(0% 0 0)",
+	"oklch(68.57% 0.134 167.49)",
+	"oklch(60.42% 0.191 21.46)",
+	"oklch(100% 0 0 / 30%)",
+	"hsl(221deg, 51%, 16%)",
+	"hsl(0deg, 0%, 90%)",
+	"oklch(76.18% 0.185 69.56)",
+	"oklch(64.19% 0.181 251.54)",
+	"oklch(67.94% 0.159 243.72)",
+	"oklch(85.31% 0.127 77.56)",
+	"oklch(63.57% 0.199 352.43)",
+	"oklch(51.85% 0.208 22.52)",
+];
 ---
 
 <Page pageTitle={title} navLinks={navLinks} footerLinks={footerLinks}>
@@ -66,6 +84,15 @@ const footerLinks = [
 
 			<Card title="Development" />
 			<Card title="Maintenance" />
+		</GridContainer>
+	</Section>
+	<Section headline="Colors">
+		<GridContainer>
+			{
+				colors.map((color) => {
+					return <Card title={color} backgroundColor={color} />;
+				})
+			}
 		</GridContainer>
 	</Section>
 </Page>
