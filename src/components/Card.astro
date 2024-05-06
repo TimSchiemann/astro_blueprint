@@ -1,11 +1,10 @@
 ---
-const { title, url, foregroundColor, backgroundColor } = Astro.props;
-
-console.log(backgroundColor);
+const { title, url, foregroundColor, backgroundColor, isColorDemo } =
+	Astro.props;
 ---
 
-<div class="card">
-	<h2 class="headline h2">{title}</h2>
+<div class="card is-color-demo">
+	{isColorDemo ? <span>{title}</span> : <h2 class="headline h2">{title}</h2>}
 	<slot />
 </div>
 <style
@@ -24,16 +23,36 @@ console.log(backgroundColor);
 		position: relative;
 		background-color: var(--backgroundColor);
 		color: var(--foregroundColor);
-		&::before {
-			content: "";
-			background-color: oklch(0% 0 0 / 0.3);
-			position: absolute;
-			inset: 0;
-			backdrop-filter: blur(100px);
-			border-radius: 20px;
+		&:not(.is-color-demo) {
+			&::before {
+				content: "";
+				inset: 0;
+				position: absolute;
+				z-index: 1;
+				@include utils.milkglass();
+			}
 		}
 		.headline {
-			z-index: 1;
+			z-index: 2;
+		}
+		span {
+			display: inline-block;
+			margin-top: auto;
+			margin-right: auto;
+			padding-inline: utils.rem-calc(12);
+			padding-block: utils.rem-calc(8);
+			border-radius: utils.rem-calc(8);
+			z-index: 2;
+			background: utils.color("black-1");
+			&::before {
+				content: "";
+				display: inline-block;
+				height: utils.rem-calc(16);
+				aspect-ratio: 1;
+				margin-right: utils.rem-calc(12);
+				background-color: var(--backgroundColor);
+				border-radius: 50%;
+			}
 		}
 	}
 </style>

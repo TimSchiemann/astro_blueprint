@@ -90,7 +90,13 @@ const colors = [
 		<GridContainer>
 			{
 				colors.map((color) => {
-					return <Card title={color} backgroundColor={color} />;
+					return (
+						<Card
+							title={color}
+							backgroundColor={color}
+							isColorDemo={true}
+						/>
+					);
 				})
 			}
 		</GridContainer>
