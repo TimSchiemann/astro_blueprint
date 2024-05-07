@@ -5,3 +5,50 @@ const { classes } = Astro.props;
 <button class:list={["button", classes]}>
 	<slot />
 </button>
+<style lang="scss" is:global>
+	@use "../styles/utils";
+
+	//can not be custom properties, have to be set manually
+	@property --color-1 {
+		syntax: "<color>";
+		inherits: true;
+		initial-value: oklch(76.18% 0.185 69.56);
+	}
+
+	@property --color-2 {
+		syntax: "<color>";
+		inherits: true;
+		initial-value: oklch(0 0 0);
+	}
+
+	button {
+		border: none;
+		color: inherit;
+	}
+	.button {
+		cursor: pointer;
+		border-radius: 999px;
+		padding: {
+			block: {
+				start: utils.rem-calc(12);
+				end: utils.rem-calc(12);
+			}
+			inline: {
+				start: utils.rem-calc(24);
+				end: utils.rem-calc(24);
+			}
+		}
+		background-image: linear-gradient(
+			to bottom in oklch,
+			var(--color-1) 0%,
+			var(--color-2) 100%
+		);
+		transition:
+			--color-1 var(--timing) ease-in-out,
+			--color-2 var(--timing) ease-in-out;
+		@include utils.hover-focus-state() {
+			--color-1: var(--color-black);
+			--color-2: var(--color-accent);
+		}
+	}
+</style>
