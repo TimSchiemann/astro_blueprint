@@ -4,6 +4,7 @@ import Section from "../components/Section.astro";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import GridContainer from "../components/GridContainer.astro";
+import Slider from "../components/Slider.astro";
 
 const title = "Styleguide";
 const navLinks = [
@@ -32,6 +33,15 @@ const colors = [
 	"oklch(85.31% 0.127 77.56)",
 	"oklch(63.57% 0.199 352.43)",
 	"oklch(51.85% 0.208 22.52)",
+];
+
+const breakoutStates = [
+	"full-width",
+	"full-width-right",
+	"full-width-left",
+	"breakout",
+	"breakout-left",
+	"breakout-right",
 ];
 ---
 
@@ -86,7 +96,7 @@ const colors = [
 			<Card title="Maintenance" />
 		</GridContainer>
 	</Section>
-	<Section headline="Colors">
+	<Section headline="Colors" className="full-width content-grid">
 		<GridContainer>
 			{
 				colors.map((color) => {
@@ -100,5 +110,23 @@ const colors = [
 				})
 			}
 		</GridContainer>
+	</Section>
+	<Section headline="Slider" className="full-width content-grid">
+		<Slider />
+	</Section>
+	<Section className="content-grid full-width">
+		{
+			breakoutStates.map((breakoutState) => {
+				return (
+					<Card
+						title={breakoutState}
+						backgroundColor={colors[1]}
+						isColorDemo={false}
+						className={breakoutState}
+						aspectRatio="5/1"
+					/>
+				);
+			})
+		}
 	</Section>
 </Page>

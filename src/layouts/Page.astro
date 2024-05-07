@@ -22,11 +22,15 @@ const { pageTitle, footerLinks, navLinks } = Astro.props;
 	</body>
 </html>
 <style lang="scss">
-	@use "../styles/utils" as utils;
+	@use "../styles/utils";
 	body {
 		--background-color: #{utils.color("primary")};
 		min-height: 100svh;
 		display: flex;
 		flex-direction: column;
+	}
+
+	main {
+		padding-top: var(--header-height);
 	}
 </style>

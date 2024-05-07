@@ -1,20 +1,31 @@
 ---
-const { title, url, foregroundColor, backgroundColor, isColorDemo } =
-	Astro.props;
+const {
+	title,
+	url,
+	foregroundColor,
+	backgroundColor,
+	isColorDemo,
+	className,
+	aspectRatio,
+} = Astro.props;
 ---
 
-<div class="card is-color-demo">
+<div class:list={["card", className]}>
 	{isColorDemo ? <span>{title}</span> : <h2 class="headline h2">{title}</h2>}
 	<slot />
 </div>
 <style
 	lang="scss"
-	define:vars={{ backgroundColor: backgroundColor, foregroundColor }}
+	define:vars={{
+		backgroundColor: backgroundColor,
+		foregroundColor,
+		aspectRatio: aspectRatio,
+	}}
 >
 	@use "../styles/utils";
 	.card {
 		border-radius: 20px;
-		aspect-ratio: 1/1;
+		aspect-ratio: var(--aspectRatio, 1);
 		display: flex;
 		flex-direction: column;
 		align-items: center;

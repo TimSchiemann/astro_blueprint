@@ -1,6 +1,7 @@
 @use "../utils";
 
 :root {
+	--header-height: #{utils.rem-calc(120)};
 	--backgrund-color: #{utils.color("black-1")};
 	--color: #{utils.color("white-1")};
 	--color-accent: #{utils.color("accent")};

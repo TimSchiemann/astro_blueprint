@@ -55,8 +55,7 @@ ol {
 
 /* grid helper */
 
-.content-grid,
-.full-width {
+.content-grid {
 	display: grid;
 	grid-template-columns: [full-width-start] 5vw [breakout-start] 5vw [content-start] 1fr [content-end] 5vw [breakout-end] 5vw [full-width-end];
 	& > :not(.breakout, .full-width) {
@@ -68,8 +67,20 @@ ol {
 	> .breakout {
 		grid-column: breakout;
 	}
-	> .full-width {
+	> .breakout-right {
+		grid-column-end: breakout-end;
+	}
+	> .breakout-left {
+		grid-column-start: breakout-start;
+	}
+	.full-width {
 		grid-column: full-width;
+	}
+	> .full-width-right {
+		grid-column-end: full-width-end;
+	}
+	> .full-width-left {
+		grid-column-start: full-width-start;
 	}
 }
 

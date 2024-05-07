@@ -1,10 +1,18 @@
 ---
-const { headline } = Astro.props;
+const { headline, className } = Astro.props;
 ---
 
-<section class="section">
+<section class:list={["section", className]}>
 	<h2 class="headline h2">
 		{headline}
 	</h2>
 	<slot />
 </section>
+<style lang="scss">
+	@use "../styles/utils";
+	.section {
+		padding: {
+			block: clamp(utils.rem-calc(24), 3svh, utils.rem-calc(36));
+		}
+	}
+</style>
