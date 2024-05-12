@@ -1,0 +1,105 @@
+---
+const { title, items } = Astro.props;
+---
+
+<fieldset id="bento">
+	<legend class="sr-only">
+		<h2 class="headline h2">{title}</h2>
+	</legend>
+	{
+		items.map((item: { title: string; content: string }, index: number) => {
+			const isPreselected = index === 0 ? true : false;
+
+			return (
+				<div>
+					<label>
+						{item.title}
+						<input
+							type="radio"
+							name="name"
+							id={index.toString()}
+							checked={isPreselected}
+							class="sr-only"
+						/>
+					</label>
+				</div>
+			);
+		})
+	}
+</fieldset>
+<script>
+	const looperGroup = document.querySelector("#bento");
+</script>
+<style lang="scss">
+	@use "../styles/utils";
+	label {
+		height: 100%;
+		display: block;
+		background-color: blue;
+	}
+	fieldset {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: utils.rem-calc(12);
+		aspect-ratio: 16/9;
+		& > div:has(input:checked) {
+			grid-row: 1 / -1;
+			grid-column: 1;
+			font-size: utils.rem-calc(30px);
+		}
+		@media (prefers-reduced-motion: no-preference) {
+			& > * {
+				&:nth-child(2) {
+					background-color: red;
+					view-transition-name: opt-1;
+					& > label {
+						view-transition-name: opt-1-label;
+					}
+					& > input {
+						view-transition-name: opt-1-input;
+					}
+				}
+				&:nth-child(3) {
+					background-color: yellow;
+					view-transition-name: opt-2;
+					& > label {
+						view-transition-name: opt-2-label;
+					}
+					& > input {
+						view-transition-name: opt-2-input;
+					}
+				}
+				&:nth-child(4) {
+					background-color: green;
+					view-transition-name: opt-3;
+					& > label {
+						view-transition-name: opt-3-label;
+					}
+					& > input {
+						view-transition-name: opt-3-input;
+					}
+				}
+			}
+		}
+	}
+</style>
+<script>
+	const radioButtons: NodeListOf<HTMLInputElement> =
+		document.querySelectorAll("#bento input");
+
+	radioButtons.forEach((radio) => {
+		radio.addEventListener("click", (e) => {
+			if (!document.startViewTransition) {
+				return;
+			}
+
+			e.preventDefault();
+
+			const target = e.target as HTMLInputElement;
+			document.startViewTransition(() => {
+				target.checked = true;
+			});
+		});
+	});
+</script>

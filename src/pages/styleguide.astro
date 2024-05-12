@@ -5,11 +5,18 @@ import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import GridContainer from "../components/GridContainer.astro";
 import Slider from "../components/Slider.astro";
+import Looper from "../components/Looper.astro";
 
 const title = "Styleguide";
 const navLinks = [
 	{ title: "Home", url: "/" },
 	{ title: "Styleguide", url: "/styleguide", highlight: true },
+];
+
+const looperItems = [
+	{ title: "alice" },
+	{ title: "bob" },
+	{ title: "charlie" },
 ];
 //TODO: replace links
 const footerLinks = [
@@ -91,7 +98,6 @@ const breakoutStates = [
 	<Section headline="test">
 		<GridContainer>
 			<Card title="Planning" />
-
 			<Card title="Development" />
 			<Card title="Maintenance" />
 		</GridContainer>
@@ -128,5 +134,8 @@ const breakoutStates = [
 				);
 			})
 		}
+	</Section>
+	<Section headline="Looper">
+		<Looper items={looperItems} />
 	</Section>
 </Page>

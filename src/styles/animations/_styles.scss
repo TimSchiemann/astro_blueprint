@@ -1,0 +1,36 @@
+::view-transition-group(*) {
+	animation-timing-function: linear(
+		0,
+		0.007,
+		0.029 2.2%,
+		0.118 4.7%,
+		0.625 14.4%,
+		0.826 19%,
+		0.902,
+		0.962,
+		1.008 26.1%,
+		1.041 28.7%,
+		1.064 32.1%,
+		1.07 36%,
+		1.061 40.5%,
+		1.015 53.4%,
+		0.999 61.6%,
+		0.995 71.2%,
+		1
+	);
+	animation-duration: 0.75s;
+}
+
+/* fixes ghosting at the bottom */
+::view-transition-old(opt-1),
+::view-transition-old(opt-2),
+::view-transition-old(opt-3),
+::view-transition-new(opt-1),
+::view-transition-new(opt-2),
+::view-transition-new(opt-3) {
+	height: 100%;
+}
+
+html {
+	view-transition-name: none;
+}
